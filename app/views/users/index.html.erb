@@ -1,6 +1,6 @@
 <div class="container">
   <h1>All users &nbsp; </h1>
-  <%= link_to "Register new user", new_user_path, class: "btn btn-success" %>
+  <%= link_to "Register new user", new_user_path, class: 'btn btn-success' %>
   <table class="table">
   <% @users.each do |user| %>
     <tr>
@@ -10,6 +10,7 @@
         method: :delete,
         data: { confirm: 'Are you sure?' },
         class: "btn btn-danger" %></td>
+      <td><%= link_to 'Edit', edit_user_path(user), class: 'btn btn-warning' %></td>
     </tr>
   <% end %>
   </table>

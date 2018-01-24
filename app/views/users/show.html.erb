@@ -8,6 +8,7 @@
       method: :delete,
       data: { confirm: 'Are you sure?' },
       class: 'btn btn-danger' %></p>
+    <p><%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-warning' %></p>
     <hr>
     <%= link_to 'Home', users_path %>
   </div>
