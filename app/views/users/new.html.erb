@@ -1,43 +1,59 @@
-<%= form_with model: @user, local: true do |form| %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Register</title>
+  </head>
 
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@user.errors.count, "error") %> prohibited
-        this article from being saved:
-      </h2>
-      <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="card-block">
+          <h4 class="card-title">Register</h4>
+          <%= form_with model: @user, local: true do |form| %>
+            <% if @user.errors.any? %>
+              <div id="error_explanation">
+                <h2>
+                  <%= pluralize(@user.errors.count, "error") %> prohibited
+                  this article from being saved:
+                </h2>
+                <ul>
+                  <% @user.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <p>
+              <%= form.label :name %><br>
+              <%= form.text_field :name %>
+            </p>
+
+            <p>
+              <%= form.label :email %><br>
+              <%= form.text_field :email %>
+            </p>
+
+            <p>
+              <%= form.label :password %><br>
+              <%= form.password_field :password %>
+            </p>
+
+            <p>
+              <%= form.label :gender %><br>
+              <%= form.text_field :gender %>
+            </p>
+
+            <p>
+              <%= form.submit %>
+            </p>
+
+          <% end %>
+          <hr>
+          <%= link_to 'Home', root_path %>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <p>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
-  </p>
-
-  <p>
-    <%= form.label :email %><br>
-    <%= form.text_field :email %>
-  </p>
-
-  <p>
-    <%= form.label :password %><br>
-    <%= form.text_field :password %>
-  </p>
-
-  <p>
-    <%= form.label :gender %><br>
-    <%= form.text_field :gender %>
-  </p>
-
-  <p>
-    <%= form.submit %>
-  </p>
-
-<% end %>
-<hr>
-<%= link_to 'Home', root_path %>
+  </body>
+</html>

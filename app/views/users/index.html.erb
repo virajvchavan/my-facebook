@@ -1,9 +1,17 @@
-<h1>All users</h1>
-<table>
-<% @users.each do |user| %>
-  <tr>
-    <td><%= link_to(user.name, user_path(user)) %></td>
-    <td><%= user.email %></td>
-  </tr>
-<% end %>
-</table>
+<div class="container">
+  <h1>All users &nbsp; </h1>
+  <%= link_to "Register new user", new_user_path, class: "btn btn-success" %>
+  <table class="table">
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= link_to(user.name, user_path(user)) %></td>
+      <td><%= user.email %></td>
+      <td><%= link_to 'Delete', user_path(user),
+        method: :delete,
+        data: { confirm: 'Are you sure?' },
+        class: "btn btn-danger" %></td>
+    </tr>
+  <% end %>
+  </table>
+
+</div>
