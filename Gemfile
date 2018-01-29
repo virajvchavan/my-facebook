@@ -33,6 +33,7 @@ gem 'jquery-rails'
 gem 'bootstrap', '~> 4.0.0'
 
 gem 'haml'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -47,6 +48,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'rspec-rails', '~> 3.7'
 end
 
 group :development do

@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   root 'users#index'
 
   resources :users do
-    resources :addresses, only: [:index, :new, :create]
+    resource :address
   end
 end
