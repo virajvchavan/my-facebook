@@ -17,7 +17,7 @@ class User < ApplicationRecord
   has_many :posts
 
   validates :name, :email, :password, :gender, presence: { message: 'Field Cannot Be Empty' }
-  validates :email, format: { with: /[\w.]*\@[\w]*\.[\w]*/ }
+  validates :email, format: { with: /[\w.]*\@[\w]*\.[\w]*/}
   validates :email, uniqueness: true
   validates :password, length: { in: 6..32 }
 end
