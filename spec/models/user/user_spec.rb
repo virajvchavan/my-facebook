@@ -24,13 +24,13 @@ RSpec.describe User do
     end
 
     let(:user3) { build :user, password: 'ab' }
-    it "has small password" do
+    it "has short password" do
       expect(user3.valid?).to eq(false)
       expect(user3.errors['password']).to eq(['is too short (minimum is 6 characters)'])
     end
 
     let(:user4) { build :user, password: 'abcdefghijklmnopqrstuvwxyztumbhikaho' }
-    it "has big password" do
+    it "has long password" do
       expect(user4.valid?).to eq(false)
       expect(user4.errors['password']).to eq(['is too long (maximum is 32 characters)'])
     end
