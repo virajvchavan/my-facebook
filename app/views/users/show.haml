@@ -8,6 +8,9 @@
     %p
       %b> Email
       \: #{@user.email}
+    %p
+      %b> Address
+      \: #{@user.address}
     %p= link_to 'Delete', user_path(@user), |
         method: :delete,                    |
         data: { confirm: 'Are you sure?' }, |

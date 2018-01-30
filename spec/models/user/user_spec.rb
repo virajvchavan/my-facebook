@@ -2,36 +2,37 @@ require "rails_helper"
 
 RSpec.describe User do
   context "User validations" do
+    let(:user) { build :user }
     it "is a valid user" do
-      user = User.new(name: 'Harry Potter', email: 'h@p.com', gender: 'male', password: 'somepassword')
       expect(user.valid?).to eq(true)
     end
 
     context "Email validation" do
+      let(:user) { build :user, email: 'hp.com' }
       it "has wrong email format" do
-        user = User.new(name: 'Harry Potter', email: 'hp.com', gender: 'male', password: 'somepassword')
         expect(user.valid?).to eq(false)
         expect(user.errors['email']).to eq(['is invalid'])
       end
 
+      let(:user1) { build :user, email: 'h@p.com' }
+      let(:user2) { build :user, email: 'h@p.com' }
       it "has unique email" do
-        User.create(name: 'Harry Potter', email: 'h@p.com', gender: 'male', password: 'somepassword')
-        user = User.new(name: 'Harry Potter', email: 'h@p.com', gender: 'male', password: 'somepassword')
-        expect(user.valid?).to eq(false)
-        expect(user.errors['email']).to eq(['has already been taken'])
+        user1.save
+        expect(user2.valid?).to eq(false)
+        expect(user2.errors['email']).to eq(['has already been taken'])
       end
     end
 
+    let(:user3) { build :user, password: 'ab' }
     it "has small password" do
-      user = User.new(name: 'Harry Potter', email: 'h@p.com', gender: 'male', password: 'a')
-      expect(user.valid?).to eq(false)
-      expect(user.errors['password']).to eq(['is too short (minimum is 6 characters)'])
+      expect(user3.valid?).to eq(false)
+      expect(user3.errors['password']).to eq(['is too short (minimum is 6 characters)'])
     end
 
+    let(:user4) { build :user, password: 'abcdefghijklmnopqrstuvwxyztumbhikaho' }
     it "has big password" do
-      user = User.new(name: 'Harry Potter', email: 'h@p.com', gender: 'male', password: 'abcdefghijklmnopqrstuvwxyztumbhikaho')
-      expect(user.valid?).to eq(false)
-      expect(user.errors['password']).to eq(['is too long (maximum is 32 characters)'])
+      expect(user4.valid?).to eq(false)
+      expect(user4.errors['password']).to eq(['is too long (maximum is 32 characters)'])
     end
   end
 end

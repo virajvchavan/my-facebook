@@ -1,0 +1,8 @@
+.container
+  .card
+    .card-block
+      .container
+        %h4.card-title Add address for #{@user.name}
+        = render 'form'
+        %hr/
+        = link_to 'Home', root_path
