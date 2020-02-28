@@ -30,7 +30,7 @@ gem 'annotate'
 
 gem 'jquery-rails'
 
-gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap', '~> 4.3.1'
 
 gem 'haml'
 
